@@ -212,17 +212,13 @@
 			return;
 		}
 
-		const model = atSelectedModel ?? $models.find((m) => m.id === selectedModels[0]);
-		if (model) {
-			selectedToolIds = [
-				...new Set(
-					[...selectedToolIds, ...(model?.info?.meta?.toolIds ?? [])].filter((id) =>
-						$tools.find((t) => t.id === id)
-					)
-				)
-			];
-		}
-	};
+                const model = atSelectedModel ?? $models.find((m) => m.id === selectedModels[0]);
+                if (model) {
+                        selectedToolIds = (model?.info?.meta?.toolIds ?? []).filter((id) =>
+                                $tools.find((t) => t.id === id)
+                        );
+                }
+        };
 
 	const setFilterIds = async () => {
 		if (selectedModels.length !== 1 && !atSelectedModel) {
